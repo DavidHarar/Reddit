@@ -3,12 +3,24 @@
 Reddit is the home for thousands of forums (`subreddits`) on various subjects that vary from mainstream to niche. It's slogan is "Dive into anything", and a as hinted, discussions on Reddit tend to be, relatively deeper than discussion on other social media networks. Another important feature of Reddit is the participants' anonimity. Each participant (`Redditor`) chooses their username at signup. This feature also lead to the more freedom when if comes to expressing extream and sometimes socialy unexeptable views.  
 On multiple occations Reddit and it's CEO were critisized for the extant of hatered spread in some of the communities untouched or regulated, leading to a toxic echo chamber. One obvious victim of such dinamic is the jewish/Israeli community, that experienced a surge in anti-semitic comments following the October 7th events in Israel.  
 
+In general, classification of comments on Reddit was challenging, as some of them aren't trivial. Table 1 present some titles and comments. Both in `/r/worldnews` and `/r/news` the title of the submission is the title of the article that is being refered to. It has no additional content. Therefore, comments were done by refering to the title or to the refered news article.  
+
+| Title | Comment |
+| ----- | ------- |
+| Israeli forces arrest Al-Shifa Hospital director | What if this is true AND it’s also monstrous to bomb a hospital? |
+| X's ad revenue to be donated to Israeli hospitals, Red Cross in Gaza: Musk | DESPERATION is thy name. |
+| Israeli cabinet approves deal for return of 50 hostages in exchange for multi-day ceasefire | LETS FUCKIN GOOOO |
+| Houthis say they'll continue attacks until 'demise of Israel' | I will file that under the FAFO category! 😬 |
+| Houthis say they'll continue attacks until 'demise of Israel' | A perfect example of idiocracy. |
+| Yemen's Houthis release footage of takeover of Israeli-linked cargo ship | GD rebel scum....flew right by the heli pad.....so rude |
+
+
 In this project I build a classifier to detect anti-Israeli and anti-semitic comments. I then combine the model with Reddit's API, `PRAW`, in order to search through recent comments and downvote them for being anti-Israeli or anti-semitic.  
 
 ## Modeling
 The modeling procedure is depicted in the following figure.
 ![Modeling](https://github.com/DavidHarar/Reddit/blob/main/plots/modeling.png)
-For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). 
+For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). For classification I used [Roberta](https://huggingface.co/roberta-base). Label-spreading was done using the `[CLS]` token, using a `KNN` kernel. Voting ensemble was used between the LLM and the label spreading 
 
 
 ## Downvote
