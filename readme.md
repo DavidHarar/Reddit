@@ -28,5 +28,8 @@ In Reddit there are two main social coins. One is `karma` and another is `awards
 
 Reddit allows the usage of automated tools when it comes to classify and vote on comments. It doesn't allow for fake accounts. In this project we offer a tool to automate the search and downvote of anti-semitic/Israeli comments, given a Reddit developer key. We do not offer or suggesting to create fake accounts by any means.  
 
-## How to get your Reddit Developer Key
-
+## How to get your Reddit API Key
+The guidance to how to get a Reddit API can be found [here](https://www.reddit.com/wiki/api/). For convenience I summarize the steps below:
+1. Read [Reddit’s Developer Terms](https://www.redditinc.com/policies/developer-terms) and [Data API Terms](https://www.redditinc.com/policies/data-api-terms). In section 4 it is specified that one should not use Reddit's data to train ML models. The restriciton is effective June 2023, while the data that was used to train the model is 10 years old. In the current project, no data is being collected nor being used for retraining the provided model.  
+2. [Register](https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=14868593862164). Here you have to specify your interest. 
+3. Get your personal API key from [here](https://old.reddit.com/prefs/apps/).
