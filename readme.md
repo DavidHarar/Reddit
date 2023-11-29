@@ -18,9 +18,9 @@ In general, classification of comments on Reddit was challenging, as some of the
 In this project I build a classifier to detect anti-Israeli and anti-semitic comments. I then combine the model with Reddit's API, `PRAW`, in order to search through recent comments and downvote them for being anti-Israeli or anti-semitic.  
 
 ## Modeling
-The modeling procedure is depicted in the following figure.
+The modeling procedure is depicted in the following figure. As can be seen in the above table, looking at comments alone can be misleading. I therefore take the title and the comment and combine them together using the following rule `f'{title} ; {comment}`. BERT based models can handle sequences of up to a length of `512` tokens. In some cases the combinations of title and a comment surpass this window. In these cases I look only at the first part of the comment. A future work could extand the treatment for long sequences by pooling predictions for different parts, or by any other method.  
 ![Modeling](https://github.com/DavidHarar/Reddit/blob/main/plots/modeling.png)
-For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). For classification I used [Roberta](https://huggingface.co/roberta-base). Label-spreading was done using the `[CLS]` token, using a `KNN` kernel. Voting ensemble was used between the LLM and the label spreading 
+For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). For classification I used [Roberta](https://huggingface.co/roberta-base). Label-spreading was done using the `[CLS]` token, using a `KNN` kernel. Voting ensemble was used between the LLM and the label spreading because neither of the method was good enough. After getting to the combined labeled data, I upscaled my data by asking the LLM to rephrase comments. I do it only once. The final version is of a fine-tuning using the labeled data, after I continue the pre-training, using the entire set of unlabeled data.  
 
 
 ## Downvote
@@ -28,5 +28,5 @@ In Reddit there are two main social coins. One is `karma` and another is `awards
 
 Reddit allows the usage of automated tools when it comes to classify and vote on comments. It doesn't allow for fake accounts. In this project we offer a tool to automate the search and downvote of anti-semitic/Israeli comments, given a Reddit developer key. We do not offer or suggesting to create fake accounts by any means.  
 
-## How to a Reddit Developer Key
+## How to get your Reddit Developer Key
 
