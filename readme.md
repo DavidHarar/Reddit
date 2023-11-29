@@ -6,6 +6,8 @@ On multiple occations Reddit and it's CEO were critisized for the extant of hate
 In this project I build a classifier to detect anti-Israeli and anti-semitic comments. I then combine the model with Reddit's API, `PRAW`, in order to search through recent comments and downvote them for being anti-Israeli or anti-semitic.  
 
 ## Modeling
+The modeling procedure is depicted in the following figure.
+![Modeling](https://github.com/DavidHarar/Reddit/blob/plots/modeling.png?raw=true)
 
 
 
