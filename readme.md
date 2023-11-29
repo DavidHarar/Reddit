@@ -15,3 +15,4 @@ In Reddit there are two main social coins. One is `karma` and another is `awards
 Reddit allows the usage of automated tools when it comes to classify and vote on comments. It doesn't allow for fake accounts. In this project we offer a tool to automate the search and downvote of anti-semitic/Israeli comments, given a Reddit developer key. We do not offer or suggesting to create fake accounts by any means.  
 
 ## How to a Reddit Developer Key
+
