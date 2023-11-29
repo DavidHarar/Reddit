@@ -8,7 +8,7 @@ In this project I build a classifier to detect anti-Israeli and anti-semitic com
 ## Modeling
 The modeling procedure is depicted in the following figure.
 ![Modeling](https://github.com/DavidHarar/Reddit/blob/main/plots/modeling.png)
-
+For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). 
 
 
 ## Downvote
