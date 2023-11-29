@@ -7,7 +7,7 @@ In this project I build a classifier to detect anti-Israeli and anti-semitic com
 
 ## Modeling
 The modeling procedure is depicted in the following figure.
-![Modeling](https://github.com/DavidHarar/Reddit/blob/plots/modeling.png?raw=true)
+![Modeling](https://github.com/DavidHarar/Reddit/blob/main/plots/modeling.png)
 
 
 
