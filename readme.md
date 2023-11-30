@@ -15,7 +15,8 @@ In general, classification of comments on Reddit was challenging, as some of the
 | Yemen's Houthis release footage of takeover of Israeli-linked cargo ship | GD rebel scum....flew right by the heli pad.....so rude |
 
 # Some Correctly Detected Comments
-As mentioned above, a large portion of the comments are quite complext. Also, there is a possible data drift. While a lot of anti Israeli comments in the training data were considered trivial (e.g. "Fuck Israel"), the negative comments about Israel tend to have more complex structures. The following table presents comments that were detected correctly. Nevertheless, even with a choice of a very high threshold (`.9`), it seems that some positive/unrelated comments end up being detected.  
+As mentioned above, a large portion of the comments are quite complext. Also, there is a possible data drift. While a lot of anti Israeli comments in the training data were considered trivial (e.g. "Fuck Israel"), the negative comments about Israel tend to have more complex structures. The following table presents comments that were detected correctly. Nevertheless, even with a choice of a very high threshold (`.9`), it seems that some positive/unrelated comments end up being detected. 
+For more examples of detected comments, visit `notebooks/detect_comments_using_praw.ipynb`.
 
 
 | Subreddit | Title | Comment |
