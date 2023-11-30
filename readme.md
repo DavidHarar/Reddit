@@ -36,7 +36,7 @@ For more examples of detected comments, visit `notebooks/detect_comments_using_p
 
 
 ## Modeling
-In this project I build a classifier to detect anti-Israeli and anti-semitic comments. I then combined the model with Reddit's API, `PRAW, ' to search through recent comments and reveal them.  
+In this project I build a classifier to detect anti-Israeli and anti-semitic comments. I then combined the model with Reddit's API, `PRAW`, to search through recent comments and reveal them.  
 
 The modeling procedure is depicted in the following figure. As can be seen in the above table, looking at comments alone can be misleading. Therefore, I take the title and the comment and combine them using the following rule `f'{title} ; {comment}`. BERT based models can handle sequences of up to a length of `512` tokens. In some cases the combinations of title and a comment surpass this window. In these cases I look only at the first part of the comment. A future work could extend the treatment for long sequences by pooling predictions for different parts, or by any other method.  
 
