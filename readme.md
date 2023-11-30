@@ -22,6 +22,12 @@ The modeling procedure is depicted in the following figure. As can be seen in th
 ![Modeling](https://github.com/DavidHarar/Reddit/blob/main/plots/modeling.png)
 For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). For classification I used [Roberta](https://huggingface.co/roberta-base). Label-spreading was done using the `[CLS]` token, using a `KNN` kernel. Voting ensemble was used between the LLM and the label spreading because neither of the method was good enough. After getting to the combined labeled data, I upscaled my data by asking the LLM to rephrase comments. I do it only once. The final version is of a fine-tuning using the labeled data, after I continue the pre-training, using the entire set of unlabeled data (it improves precision mostly on the right-most side of the predicted scores, in comparisson with the just-fine-tuned model). Fine-tuning was done by training the pre-trained model for 3 epochs on the labeled data.  
 
+## Limitations and Further Work
+I made accomadations on multiple occations to see the project through.
+- Data: I used old Reddit's data using the Pushlift Data Dumps. Each subreddit includes two files, one for sumbissions and another for comments made for each sumbission, and for each comment. I didn't address comments to comments and basically trained a model using only comments made directly to the submission itself. 
+- Model: As mentioned above, I didn't solve the issue of long strings. A further work would be able to solve it. 
+- Labeled data: I manually labeled only 3k observations. In order to have a more robust data, one should label more examples. 
+
 
 ## Downvote and Legal
 In Reddit there are two main social coins. One is `karma` and another is `awards`. The latter is basically diginal prizes given between redditors to express upreciation for meaningfull comments. Most of these awards cost money, and this project ignores them entirely. The other coin, `karma`, is basically the balance of upvotes and downvotes of the comments a redittor has made. Being downvoted for a hateful comment will inflict on the user's karma.  
