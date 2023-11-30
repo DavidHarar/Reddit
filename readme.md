@@ -23,13 +23,15 @@ The modeling procedure is depicted in the following figure. As can be seen in th
 For LLM I used the [Zephyr-7b-alpha](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha). For classification I used [Roberta](https://huggingface.co/roberta-base). Label-spreading was done using the `[CLS]` token, using a `KNN` kernel. Voting ensemble was used between the LLM and the label spreading because neither of the method was good enough. After getting to the combined labeled data, I upscaled my data by asking the LLM to rephrase comments. I do it only once. The final version is of a fine-tuning using the labeled data, after I continue the pre-training, using the entire set of unlabeled data (it improves precision mostly on the right-most side of the predicted scores, in comparisson with the just-fine-tuned model). Fine-tuning was done by training the pre-trained model for 3 epochs on the labeled data.  
 
 
-## Downvote
+## Downvote and Legal
 In Reddit there are two main social coins. One is `karma` and another is `awards`. The latter is basically diginal prizes given between redditors to express upreciation for meaningfull comments. Most of these awards cost money, and this project ignores them entirely. The other coin, `karma`, is basically the balance of upvotes and downvotes of the comments a redittor has made. Being downvoted for a hateful comment will inflict on the user's karma.  
 
-Reddit allows the usage of automated tools when it comes to classify and vote on comments. It doesn't allow for fake accounts. In this project we offer a tool to automate the search and downvote of anti-semitic/Israeli comments, given a Reddit developer key. We do not offer or suggesting to create fake accounts by any means.  
+Reddit API allows for downvote and upvote of comments and submissions directly form the API. Nevertheless, the usage of automated voting may be considered a violation of their policies, and hence **I do not recomend it, and any change to the provided code is on the modifier's responsibility**. For this reason, in this project I only reveal comments that are suspected of being antisemitic or anti-Israeli.  
+Regarding the use of Reddit'd Data in a machine learning model (see [3.2 Restrictions](https://www.redditinc.com/policies/data-api-terms?fbclid=IwAR3H0FWGTMVo1W0hJJhkBD31knspw36N5DvbO5RiBfz1bIl8lXk_tZLtKnE), Data API Terms), it is said that data that atchieved through Reddit's API won't be used to train ML models effective June 19,2023. The data used in this project was taken from [Reddit Pushlift](https://www.reddit.com/r/pushshift/), a community that aggregates Reddit's old data, from when it was perfectly legal to be used for training ML models. 
+
 
 ## How to get your Reddit API Key
-The guidance to how to get a Reddit API can be found [here](https://www.reddit.com/wiki/api/). For convenience I summarize the steps below:
+In order to get such report, one has to have a Reddit API key. [This](https://www.reddit.com/wiki/api/) is a guide for how to get one. For convenience I summarize the steps below:
 1. Read [Reddit’s Developer Terms](https://www.redditinc.com/policies/developer-terms) and [Data API Terms](https://www.redditinc.com/policies/data-api-terms). In section 4 it is specified that one should not use Reddit's data to train ML models. The restriciton is effective June 2023, while the data that was used to train the model is 10 years old. In the current project, no data is being collected nor being used for retraining the provided model.  
 2. [Register](https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=14868593862164). Here you have to specify your interest. 
 3. Get your personal API key from [here](https://old.reddit.com/prefs/apps/).
