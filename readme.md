@@ -8,23 +8,15 @@ In general, the classification of comments on Reddit was challenging, as many of
 
 | Subreddit | Title | Comment | LLM Label | 
 | --------- | ----- | ------- | --------- |
-| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | There are lots of opponents of BDS (boycotts, divestment and sanctions) which are directed at Israel, as they say it is unhelpful to arriving at a solution. 
- 
- Well the Israeli government just directed sanctions against the westbank (while it boycotts/blockades gaza). | Neutral |"
+| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | There are lots of opponents of BDS (boycotts, divestment and sanctions) which are directed at Israel, as they say it is unhelpful to arriving at a solution. Well the Israeli government just directed sanctions against the westbank (while it boycotts/blockades gaza). | Neutral |
 | /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | This is how Israel reacts to peaceful diplomatic efforts on the part of Palestinians. | Neutral |
 | /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | Israel... just 50 years ago you were in a similar place to the PA.. scattered, beaten, persecuted, stateless. One would think that out of all peoples, Israel would know not to oppress someone. 'Those who do not learn from history are condemned to repeat it'... couldn't be a truer statement in this conflict. | Neutral |
 | /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | Stay classy Israel | Pro Israeli |
 | /r/WorldNews | "State of Palestine" allowed to join Geneva Conventions | You can dropped the double quote marks, they are reserved for "israel". | Neutral |
 | /r/WorldNews | UN to summon Kim Jong Un before international court; China says it will veto any action against its ally and may block the summoning. | The US vetoes international legal action against its "ally" Israel all the time of course, so China has a long way to catch up in the defying-international-law stakes. | Neutral |
-"| /r/WorldNews | Israel destroys aid projects in West Bank to make room for settlements | We see Russians acting as victims, but they are the ones taking others's land...
- 
- We see Israelites acting as victims, but they are the ones taking others land...
- 
- Are we in a age where the victims are the thieves, or the thieves are the victims? | Neutral |"
+| /r/WorldNews | Israel destroys aid projects in West Bank to make room for settlements | We see Russians acting as victims, but they are the ones taking others's land... We see Israelites acting as victims, but they are the ones taking others land... Are we in a age where the victims are the thieves, or the thieves are the victims? | Neutral |
 | /r/WorldNews | France‚Äôs highest appeal court has ordered the country‚Äôs major Jewish organization to pay damages for falsely claiming that a charity supporting Palestinians collected money for Hamas. | I'm sure the Israel Internet cronies will be on this in a minuet, but I'm glad that Palatine aid groups are starting to fight back from the tide of Israeli groups always comparing them to terrorist. | Neutral |
-"| /r/WorldNews | U.S. officials angry: Israel doesn‚Äôt back stance on Russia | Israel cares about itself, and no one else at all. It doesn't feel indebted to the U.S., why is anyone surprised? 
- 
- Time to change our stance towards the Palestine-Israel conflict. | Neutral |"
+| /r/WorldNews | U.S. officials angry: Israel doesn‚Äôt back stance on Russia | Israel cares about itself, and no one else at all. It doesn't feel indebted to the U.S., why is anyone surprised? Time to change our stance towards the Palestine-Israel conflict. | Neutral |
 # Some Correctly Detected Comments
 As mentioned above, a large portion of the comments are pretty complex. Also, there is a possible data drift. While a lot of anti-Israeli comments in the training data were considered trivial (e.g. "Fuck Israel"), the negative comments about Israel tend to have more complex structures. The following table presents comments that were detected correctly. Nevertheless, even with a choice of a very high threshold (`.9`), it seems that some positive/unrelated comments end up being detected.  
 For more examples of detected comments, visit `notebooks/detect_comments_using_praw.ipynb`.
