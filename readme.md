@@ -3,17 +3,28 @@
 Reddit is the home for thousands of forums (`subreddits`) on various subjects that vary from mainstream to niche. Its slogan is "Dive into anything," as hinted, Reddit discussions tend to be relatively deeper than discussions on other social media networks. Another important feature of Reddit is the participants' anonymity. Each participant (`Redditor`) chooses their username at signup. This feature also leads to more freedom when it comes to expressing extreme and sometimes socially unacceptable views.  
 On multiple occasions, Reddit and its CEO were criticized for the extant of hatred spread in some of the communities untouched or regulated, leading to a toxic echo chamber. One prominent victim of such a dynamic is the Jewish/Israeli community, which experienced a surge in anti-semitic comments following the October 7th events in Israel.  
 
-In general, the classification of comments on Reddit was challenging, as some of them aren't trivial. Table 1 presents some titles and comments. Both in `/r/worldnews` and `/r/news`, the submission's title is the title of the article being referred to. It has no additional content. Therefore, comments were made by referring to the title or the referred news article.  
+In this project, I try to automate the detection of anti-Israeli and antisemitic comments in the largest news subreddits. I do it by using Reddit's historical data. I start by manually label a golden set. Then, I explored automated labeling schemes and converged into using an ensemble of such methods. I explored the model space as well, and found out that `roberta-base` performed the best. Asking LLMs whether a comment is antisemitic, anti-Israeli or not didn't work out and the model struggled in sarcastic, indirect or unexplicit negative comments. Using LLM for data augmentation ([Balkus and Yan](https://arxiv.org/abs/2205.10981)) helped to achieve a better model and increased the generalization. Id didn't perform well on classification (none of GPT4, GPT3.5, LLaMa 7B and Zephyr 7B alpha).  
+In general, the classification of comments on Reddit was challenging, as many of them aren't trivial. Table 1 presents some titles and comments. Both in `/r/worldnews` and `/r/news`, the submission's title is the title of the article being referred to. It has no additional content. Therefore, comments were made by referring to the title or the referred news article.  
 
-| Title | Comment |
-| ----- | ------- |
-| Israeli forces arrest Al-Shifa Hospital director | What if this is true AND it’s also monstrous to bomb a hospital? |
-| X's ad revenue to be donated to Israeli hospitals, Red Cross in Gaza: Musk | DESPERATION is thy name. |
-| Israeli cabinet approves deal for return of 50 hostages in exchange for multi-day ceasefire | LETS FUCKIN GOOOO |
-| Houthis say they'll continue attacks until 'demise of Israel' | I will file that under the FAFO category! 😬 |
-| Houthis say they'll continue attacks until 'demise of Israel' | A perfect example of idiocracy. |
-| Yemen's Houthis release footage of takeover of Israeli-linked cargo ship | GD rebel scum....flew right by the heli pad.....so rude |
-
+| Subreddit | Title | Comment | LLM Label | 
+| --------- | ----- | ------- | --------- |
+| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | There are lots of opponents of BDS (boycotts, divestment and sanctions) which are directed at Israel, as they say it is unhelpful to arriving at a solution. 
+ 
+ Well the Israeli government just directed sanctions against the westbank (while it boycotts/blockades gaza). | Neutral |"
+| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | This is how Israel reacts to peaceful diplomatic efforts on the part of Palestinians. | Neutral |
+| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | Israel... just 50 years ago you were in a similar place to the PA.. scattered, beaten, persecuted, stateless. One would think that out of all peoples, Israel would know not to oppress someone. 'Those who do not learn from history are condemned to repeat it'... couldn't be a truer statement in this conflict. | Neutral |
+| /r/WorldNews | BBC News -Israel impose tax sanction against Palestinian Authority in retaliation for signing a number of international treaties | Stay classy Israel | Pro Israeli |
+| /r/WorldNews | "State of Palestine" allowed to join Geneva Conventions | You can dropped the double quote marks, they are reserved for "israel". | Neutral |
+| /r/WorldNews | UN to summon Kim Jong Un before international court; China says it will veto any action against its ally and may block the summoning. | The US vetoes international legal action against its "ally" Israel all the time of course, so China has a long way to catch up in the defying-international-law stakes. | Neutral |
+"| /r/WorldNews | Israel destroys aid projects in West Bank to make room for settlements | We see Russians acting as victims, but they are the ones taking others's land...
+ 
+ We see Israelites acting as victims, but they are the ones taking others land...
+ 
+ Are we in a age where the victims are the thieves, or the thieves are the victims? | Neutral |"
+| /r/WorldNews | France‚Äôs highest appeal court has ordered the country‚Äôs major Jewish organization to pay damages for falsely claiming that a charity supporting Palestinians collected money for Hamas. | I'm sure the Israel Internet cronies will be on this in a minuet, but I'm glad that Palatine aid groups are starting to fight back from the tide of Israeli groups always comparing them to terrorist. | Neutral |
+"| /r/WorldNews | U.S. officials angry: Israel doesn‚Äôt back stance on Russia | Israel cares about itself, and no one else at all. It doesn't feel indebted to the U.S., why is anyone surprised? 
+ 
+ Time to change our stance towards the Palestine-Israel conflict. | Neutral |"
 # Some Correctly Detected Comments
 As mentioned above, a large portion of the comments are pretty complex. Also, there is a possible data drift. While a lot of anti-Israeli comments in the training data were considered trivial (e.g. "Fuck Israel"), the negative comments about Israel tend to have more complex structures. The following table presents comments that were detected correctly. Nevertheless, even with a choice of a very high threshold (`.9`), it seems that some positive/unrelated comments end up being detected.  
 For more examples of detected comments, visit `notebooks/detect_comments_using_praw.ipynb`.
